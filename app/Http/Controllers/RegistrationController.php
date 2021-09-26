@@ -13,21 +13,23 @@ class RegistrationController extends Controller
 {
 		    
 		public function registryView(){
-
+			return 'ok';
 		}
 
 	//End method
 
 
 		public function registryAdd(){
-
+			 $this->data['room_no']  = Rooms::all();
+			 $this->data['courses']  = Course::all();
+			 return view('backend.registrations.add_registrations',$this->data);
 		}
 
 	//End method
 
 
-		public function registryStore(){
-
+		public function registryStore(Request $request){
+             return $request->all();
 		}
 
 	//End method
