@@ -13,8 +13,10 @@ class RegistrationController extends Controller
 {
 		    
 		public function registryView(){
-			return 'ok';
+			$this->data['allData']   = Registration::all();
+			return view('backend.registrations.view_registrations',$this->data);
 		}
+		
 
 	//End method
 
@@ -29,7 +31,42 @@ class RegistrationController extends Controller
 
 
 		public function registryStore(Request $request){
-             return $request->all();
+              
+
+ 		Registration::insert([
+
+				'room_id'=>$request->room_id,
+				'course_id'=>$request->course_id,
+				'reg_no'=>$request->reg_no,
+				'seater'=>$request->seater,
+				'feespm'=>$request->feespm,
+				'foodstatus'=>$request->foodstatus,
+				'stayfrom'=>$request->stayfrom,
+				'durations'=>$request->durations,
+				'gender'=>$request->gender,
+				'first_name'=>$request->first_name,
+				'last_name'=>$request->last_name,
+				'phone_no'=>$request->phone_no,
+				'email'=>$request->email,
+				'gurdian_name'=>$request->gurdian_name,
+				'gurdian_contact'=>$request->gurdian_contact,
+				'gurdian_relation'=>$request->gurdian_relation,
+				'current_address'=>$request->current_address,
+				'current_state'=>$request->current_state,
+				'current_city'=>$request->current_city,
+				'current_pincode'=>$request->current_pincode,
+				'permanent_address'=>$request->permanent_address,
+				'permanent_state'=>$request->permanent_state,
+				'permanent_city'=>$request->permanent_city,
+				'permanent_pincode'=>$request->permanent_pincode,
+				'posting_date'=>$request->posting_date,
+
+ 		]);
+
+      Toastr::success('Registration Successfully Saved :)' ,'Success');
+      return redirect()->route('registry.view');
+
+
 		}
 
 	//End method
@@ -49,13 +86,24 @@ class RegistrationController extends Controller
 	//End method
 
 
-		public function registryDelete(){
+		public function registryDelete($id){
+
+			$registry = Registration::findOrFail($id);
+			$registry->delete();
+
+      Toastr::success('Registration Successfully delete :)' ,'Success');
+      return redirect()->route('registry.view');
+
 
 		}
 
 	//End method
 
-
+	public function findPrice(Request $request)
+	{
+		     $category = Rooms::whereId($request->id)->first();
+	    	return $category;
+	}
 
 
 

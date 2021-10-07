@@ -32,7 +32,7 @@
 		<div class="form-group">
 			<h5>Room No.  <span class="text-danger">*</span></h5>
 			<div class="controls">
-				<select id="room_id" name="room_id" onChange="getSeater(this.value);" onBlur="checkAvailability()" class="form-control" >
+				<select id="room_id" name="room_id"  class="form-control room_id" >
 					<option value="">Select Room</option>
 					@foreach($room_no as $room)
 					<option value="{{ $room->id }}">{{ $room->room_no }}</option>
@@ -51,8 +51,8 @@
                 {{-- <select id="seater" name="seater"  class="form-control" >
 					
 				</select>  --}}
-				<input type="text" id="seater" name="seater"  class="form-control">
- 
+				{{-- <input type="text" id="seater" name="seater"  class="form-control"> --}}
+ 	             <input type="text"  name="seater" class="form-control prod_price" id="prod_price" value="0">
 			</div>
 			 
 		</div>
@@ -67,7 +67,8 @@
 			<h5>Fees Per Month <span class="text-danger">*</span></h5>
 			<div class="controls">
 				
-				<input type="text" id="feespm" name="feespm"  class="form-control" >
+				 <input type="text" class="form-control fees" name="feespm" id="fees" value="0">
+
 			</div>
 			 
 		</div>
@@ -115,7 +116,7 @@
 		<div class="form-group">
 			<h5>Food Status <span class="text-danger">*</span></h5>
 			
-			 <select id="fees" name="fees"  class="form-control" >
+			 <select id="foodstatus" name="foodstatus"  class="form-control" >
 			 	<option value="Without Food"> Without Food</option>
 			 	<option value="With Food(Rs 2000.00 Per Month Extra)"> With Food(Rs 2000.00 Per Month Extra)</option>
 			 </select>
@@ -455,31 +456,47 @@
 @section('footer_js')
 
 
-<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 
 <script>
-		function getSeater(val) {
-		$.ajax({
-		// type: "POST",
-		// url: "get_seater.php",
-		data:'room_id='+val,
-		success: function(data){
-		//alert(data);
-		$('#seater').val(data);
-		}
-		});
+
+  $(document).ready(function(){
+     $('#room_id').on('change', function(){
+			var prod_id=$(this).val();
+
+			$.ajax({
+				url:'{{ route("findPrice")}}',
+				data:{
+					id:prod_id,
+				},					
+				success:function(data){			
+					console.log(data.seater);
+					$('#prod_price').val(data.seater);
+				}
+			});
+       });
+//End One Portion
+
+    $('#room_id').on('change', function(){
+			var prode_id=$(this).val();
+
+			$.ajax({
+				url:'{{ route("findPrice")}}',
+				data:{
+					id:prode_id,
+				},					
+				success:function(data){			
+					console.log(data.fees);
+					$('#fees').val(data.fees);
+				}
+			});
+       });
+
+//End One Portion
 
 
-		$.ajax({
-		// type: "POST",
-		// url: "get_seater.php",
-		data:'room_id='+val,
-		success: function(data){
-		//alert(data);
-		$('#feespm').val(data);
-		}
-		});
-		}
+  });
+
+		
 </script>
 
 @endsection

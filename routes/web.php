@@ -45,6 +45,7 @@ Route::get('/delete/{id}',[RoomController::class,'RoomsDelete'])->name('rooms.de
 Route::prefix('registry')->group(function (){
 
 Route::get('/view',[RegistrationController::class,'registryView'])->name('registry.view');
+Route::get('/findPrice',[RegistrationController::class,'findPrice'])->name('findPrice');
 Route::get('/add',[RegistrationController::class,'registryAdd'])->name('registry.add');
 Route::post('/store',[RegistrationController::class,'registryStore'])->name('registry.store');
 Route::get('/edit/{id}',[RegistrationController::class,'registryEdit'])->name('registry.edit');

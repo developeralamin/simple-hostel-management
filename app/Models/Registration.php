@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Registration extends Model
 {
     use HasFactory;
+
+     public function room(){
+     	 return $this->belongsTo(Rooms::class);
+     }
+
+
 }

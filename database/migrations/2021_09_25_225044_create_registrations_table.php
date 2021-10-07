@@ -18,10 +18,12 @@ class CreateRegistrationsTable extends Migration
             $table->integer('room_id');
             $table->integer('course_id')->nullable();
             $table->integer('reg_no')->nullable();
+            $table->integer('seater')->nullable();
             $table->string('feespm')->nullable();
             $table->string('foodstatus')->nullable();
             $table->string('stayfrom')->nullable();
             $table->string('durations')->nullable();
+            $table->string('gender')->nullable();
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
             $table->string('phone_no')->nullable();
