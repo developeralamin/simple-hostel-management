@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\ProfileController;
 
 
 
@@ -16,6 +17,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 
 })->name('dashboard');
+
 
 
 Route::prefix('course')->group(function (){
@@ -54,3 +56,12 @@ Route::get('/delete/{id}',[RegistrationController::class,'registryDelete'])->nam
 
 });
 
+Route::prefix('profile')->group(function (){
+
+Route::get('/view',[ProfileController::class,'ViewProfile'])->name('profile.view');
+Route::get('/edit',[ProfileController::class,'EditProfile'])->name('profile.edit');
+Route::post('/store',[ProfileController::class,'StoreProfile'])->name('profile.store');
+Route::get('/password/view',[ProfileController::class,'PasswordView'])->name('password.view');
+Route::post('/password/update',[ProfileController::class,'PasswordUpdate'])->name('passwrd.update');
+
+});

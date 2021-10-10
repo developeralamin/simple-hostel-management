@@ -62,7 +62,7 @@
 	
 	{{-- datatable js --}}
 <script src="{{ asset('../assets/vendor_components/datatable/datatables.min.js') }}"></script>
-  <script src="{{ asset('backend/js/pages/data-table.js') }}"></script>
+  {{-- <script src="{{ asset('backend/js/pages/data-table.js') }}"></script> --}}
 
 
 	<!-- Sunny Admin App -->
