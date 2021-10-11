@@ -5,6 +5,13 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AdminLogoutController;
+
+
+
+
+
+Route::group(['middleware' => 'prevent-back-history'],function(){
 
 
 
@@ -13,12 +20,29 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('admin.index');
-
+  
+ // Route::get('/admin/view',[DashboardController::class,'AdminView']);
+  return view('admin.index'); 
 
 })->name('dashboard');
 
 
+
+
+Route::get('/admin/logout',[AdminLogoutController::class,'Logout'])->name('admin.logout');
+
+Route::group(['middleware' => 'auth'],function(){
+
+
+Route::prefix('profile')->group(function (){
+
+Route::get('/view',[ProfileController::class,'ViewProfile'])->name('profile.view');
+Route::get('/edit',[ProfileController::class,'EditProfile'])->name('profile.edit');
+Route::post('/store',[ProfileController::class,'StoreProfile'])->name('profile.store');
+Route::get('/password/view',[ProfileController::class,'PasswordView'])->name('password.view');
+Route::post('/password/update',[ProfileController::class,'PasswordUpdate'])->name('passwrd.update');
+
+});
 
 Route::prefix('course')->group(function (){
 
@@ -56,12 +80,9 @@ Route::get('/delete/{id}',[RegistrationController::class,'registryDelete'])->nam
 
 });
 
-Route::prefix('profile')->group(function (){
 
-Route::get('/view',[ProfileController::class,'ViewProfile'])->name('profile.view');
-Route::get('/edit',[ProfileController::class,'EditProfile'])->name('profile.edit');
-Route::post('/store',[ProfileController::class,'StoreProfile'])->name('profile.store');
-Route::get('/password/view',[ProfileController::class,'PasswordView'])->name('password.view');
-Route::post('/password/update',[ProfileController::class,'PasswordUpdate'])->name('passwrd.update');
+
+});
+//middleware
 
 });

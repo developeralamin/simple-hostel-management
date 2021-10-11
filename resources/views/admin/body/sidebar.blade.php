@@ -46,7 +46,7 @@ $route  = Route::current()->getName();
           </ul>
         </li> 
 		  
-        <li class="treeview">
+        <li class="treeview {{ ($prefix == '/profile')?'active' : '' }}">
           <a href="#">
             <i data-feather="mail"></i> <span>Manage Profile</span>
             <span class="pull-right-container">
@@ -54,8 +54,8 @@ $route  = Route::current()->getName();
             </span>
           </a>
           <ul class="treeview-menu">
-             <li><a href="{{ route('profile.view') }}"><i class="ti-more"></i>View Profile</a></li>
-            <li><a href="{{ route('password.view') }}"><i class="ti-more"></i>Password View</a></li>
+             <li class="{{ ($route == 'profile.view')?'active':'' }}"><a href="{{ route('profile.view') }}"><i class="ti-more"></i>View Profile</a></li>
+            <li class="{{ ($route == 'password.view')?'active':'' }}"><a href="{{ route('password.view') }}"><i class="ti-more"></i>Password Change</a></li>
           </ul>
         </li>
 		

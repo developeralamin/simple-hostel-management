@@ -64,17 +64,31 @@ class ProfileController extends Controller
 
 
 	public function PasswordView(){
-
+        return view('backend.users.edit_password');			
 	}
 	//End method
 
 
-	public function PasswordUpdate(){
+	public function PasswordUpdate(Request $request){
+       
+    // $validata = $request->validate([
+	   //  	'oldpassword'  => 'required',
+	   //      'password'     => 'required|confirmed',
+	   //   ]);
 
-	}
-	//End method
+      $haspassword = Auth::user()->password;
 
+     if(Hash::check($request->oldpassword,$haspassword)){
+      	  $user = User::find(Auth::id());
+      	  $user->password = Hash::make($request->password);
+      	  $user->save();
+      	  Auth::logout();
+     	  return redirect()->route('login');
+      }else{
+      	return redirect()->back();
+      }
 
+   }
 
 
 }
