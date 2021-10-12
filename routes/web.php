@@ -6,6 +6,7 @@ use App\Http\Controllers\RoomController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminLogoutController;
+use App\Http\Controllers\AdminController;
 
 
 
@@ -13,11 +14,10 @@ use App\Http\Controllers\AdminLogoutController;
 
 Route::group(['middleware' => 'prevent-back-history'],function(){
 
-
-
 Route::get('/', function () {
     return view('auth.login');
 });
+
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
   
@@ -33,6 +33,16 @@ Route::get('/admin/logout',[AdminLogoutController::class,'Logout'])->name('admin
 
 Route::group(['middleware' => 'auth'],function(){
 
+Route::prefix('user')->group(function (){
+
+Route::get('/view',[AdminController::class,'ViewUser'])->name('user.view');
+Route::get('/add',[AdminController::class,'AddUser'])->name('user.add');
+Route::post('/store',[AdminController::class,'StoreUser'])->name('user.store');
+Route::get('/edit/{id}',[AdminController::class,'EditUser'])->name('user.edit');
+Route::post('/update/{id}',[AdminController::class,'UserUpdate'])->name('user.update');
+Route::get('/delete/{id}',[AdminController::class,'UserDelete'])->name('user.delete');
+
+});
 
 Route::prefix('profile')->group(function (){
 

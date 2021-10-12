@@ -71,10 +71,10 @@ class ProfileController extends Controller
 
 	public function PasswordUpdate(Request $request){
        
-    // $validata = $request->validate([
-	   //  	'oldpassword'  => 'required',
-	   //      'password'     => 'required|confirmed',
-	   //   ]);
+    $validata = $request->validate([
+	    	'oldpassword'  => 'required',
+	        'password'     => 'required|confirmed',
+	     ]);
 
       $haspassword = Auth::user()->password;
 

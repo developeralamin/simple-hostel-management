@@ -31,14 +31,15 @@
         <ul class="nav navbar-nav">
 		  <!-- full Screen -->
 	      <li class="search-bar">		  
-			  <div class="lookup lookup-circle lookup-right">
-			     <input type="text" name="s">
-			  </div>
+			  {{-- <div class="lookup lookup-circle lookup-right"> --}}
+			     {{-- <input type="text" name="s"> --}}
+			    <h3> {{ Auth::user()->usertype }} </h3> 
+			  {{-- </div> --}}
 		  </li>			
 		  <!-- Notifications -->
 		  <li class="dropdown notifications-menu">
 			<a href="#" class="waves-effect waves-light rounded dropdown-toggle" data-toggle="dropdown" title="Notifications">
-			  <i class="ti-bell"></i>
+			 <i class="ti-bell"></i>
 			</a>
 			<ul class="dropdown-menu animated bounceIn">
 
@@ -115,8 +116,10 @@
 			</a>
 			<ul class="dropdown-menu animated flipInX">
 			  <li class="user-body">
-				 <a class="dropdown-item" href="#"><i class="ti-user text-muted mr-2"></i> Profile</a>
-				 <a class="dropdown-item" href="#"><i class="ti-wallet text-muted mr-2"></i> My Wallet</a>
+				 <a class="dropdown-item" href="#"><i class="ti-user text-muted mr-2"></i>
+				 	{{ Auth::user()->name }}</a>
+				 <a class="dropdown-item" href="#"><i class="ti-wallet text-muted mr-2"></i>
+				  {{ Auth::user()->usertype }}</a>
 				 <a class="dropdown-item" href="#"><i class="ti-settings text-muted mr-2"></i> Settings</a>
 				 <div class="dropdown-divider"></div>
 
