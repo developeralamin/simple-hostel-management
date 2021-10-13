@@ -72,7 +72,7 @@ class RegistrationController extends Controller
 	//End method
 
 
-		public function registryEdit(){
+		public function registryEdit($id){
 
 		}
 
