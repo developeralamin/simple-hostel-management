@@ -44,7 +44,7 @@
 	<div class="form-group">
 		<h5>User Name <span class="text-danger">*</span></h5>
 		<div class="controls">
-	 <input type="text" name="name" class="form-control" >  </div>
+	 <input type="text" name="name" class="form-control " >  </div>
 		 
 	</div>
 

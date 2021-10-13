@@ -12,6 +12,8 @@ class Registration extends Model
      public function room(){
      	 return $this->belongsTo(Rooms::class);
      }
-
+   public function course(){
+     	 return $this->belongsTo(Course::class);
+     }
 
 }

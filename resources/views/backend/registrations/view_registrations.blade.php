@@ -49,6 +49,7 @@
 				<td>
 <a href="{{ route('registry.edit',$registry->id) }}" class="btn btn-info">Edit</a>
 <a href="{{ route('registry.delete',$registry->id) }}" class="btn btn-danger" id="delete">Delete</a>
+<a target="__blank" href="{{ route('Detaisl.registration',$registry->id) }}" class="btn btn-success" id="#">Details</a>
 
 				</td>
 				 

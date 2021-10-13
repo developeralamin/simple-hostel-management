@@ -88,6 +88,9 @@ Route::get('/edit/{id}',[RegistrationController::class,'registryEdit'])->name('r
 Route::post('/update/{id}',[RegistrationController::class,'registryUpdate'])->name('registry.update');
 Route::get('/delete/{id}',[RegistrationController::class,'registryDelete'])->name('registry.delete');
 
+Route::get('/details/{details_id}',[RegistrationController::class,'Details'])->name('Detaisl.registration');
+
+
 });
 
 

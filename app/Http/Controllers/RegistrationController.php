@@ -7,7 +7,7 @@ use App\Models\Rooms;
 use App\Models\Course;
 use App\Models\Registration;
 use Brian2694\Toastr\Facades\Toastr;
-
+use PDF;
 
 class RegistrationController extends Controller
 {
@@ -104,6 +104,20 @@ class RegistrationController extends Controller
 		     $category = Rooms::whereId($request->id)->first();
 	    	return $category;
 	}
+
+//End method
+
+	 public function Details($details_id)
+	 {
+	   $this->data['borders'] = Registration::where('id',$details_id)->first();
+           
+
+	$pdf = PDF::loadView('backend.registrations.registrations_details', $this->data);
+	$pdf->SetProtection(['copy', 'print'], '', 'pass');
+	return $pdf->stream('document.pdf');
+
+	 }
+
 
 
 

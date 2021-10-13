@@ -77,22 +77,22 @@
 		<div class="form-group">
 			<h5>Duration<span class="text-danger">*</span></h5>
 			<div class="controls">
-				
-				 <select name="durations"  class="form-control">
+				 <input type="text" name="durations"  class="form-control" >  
+				{{--  <select name="durations"  class="form-control">
 				 	<option value="">Select Month</option>
-				 	<option value="1">1</option>
-				 	<option value="2">2</option>
-				 	<option value="3">3</option>
-				 	<option value="4">4</option>
-				 	<option value="5">5</option>
-				 	<option value="6">6</option>
-				 	<option value="7">7</option>
-				 	<option value="8">8</option>
-				 	<option value="9">9</option>
-				 	<option value="10">10</option>
-				 	<option value="11">11</option>
-				 	<option value="12">12</option>
-				 </select>
+				 	<option value="1">1 month</option>
+				 	<option value="2">2 month</option>
+				 	<option value="3">3 month</option>
+				 	<option value="4">4 month</option>
+				 	<option value="5">5 month</option>
+				 	<option value="6">6 month</option>
+				 	<option value="7">7 month</option>
+				 	<option value="8">8 month</option>
+				 	<option value="9">9 month</option>
+				 	<option value="10">10 month</option>
+				 	<option value="11">11 month</option>
+				 	<option value="12">12 month</option>
+				 </select> --}}
 			</div>
 			 
 		</div>

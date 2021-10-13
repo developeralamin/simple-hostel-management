@@ -57,21 +57,39 @@ class AdminController extends Controller
 	//End mehtod
 
 
-	public function EditUser(){
+	public function EditUser($id){
+
+          $this->data['editData']  = User::findOrFail($id);
+         return view('backend.users.edit_user',$this->data);
 
 	}
 	//End mehtod
 
 
-	public function UserUpdate(){
+	public function UserUpdate(Request $request , $id){
+
+     User::findOrFail($id)->update([
+        'name'  => $request->name , 
+        'email'  => $request->email,  
+        'usertype'  => $request->usertype,  
+ 
+     ]);
+
+    Toastr::success('Profile Successfully Update :)' ,'Success');
+          return redirect()->route('user.view');
 
 	}
 	//End mehtod
 
 
-	public function UserDelete(){
+	public function UserDelete($id){
 
-       
+       $user = User::findOrFail($id);
+
+       $user->delete();
+
+         Toastr::success('Profile Successfully Update :)' ,'Success');
+          return redirect()->route('user.view');
 
 
 	}
