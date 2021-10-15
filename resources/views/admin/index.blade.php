@@ -1,6 +1,12 @@
 @extends('admin.admin_master')
 
 @section('content')
+@php
+  $border  = DB::table('registrations')->count('id');
+  $courses  = DB::table('courses')->count('id');
+  $rooms  = DB::table('rooms')->count('id');
+@endphp
+
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -16,8 +22,9 @@
 								<i class="text-primary mr-0 font-size-24 mdi mdi-account-multiple"></i>
 							</div>
 							<div>
-								<p class="text-mute mt-20 mb-0 font-size-16">New Customers</p>
-								<h3 class="text-white mb-0 font-weight-500">3400 <small class="text-success"><i class="fa fa-caret-up"></i> +2.5%</small></h3>
+								<p class="text-mute mt-20 mb-0 font-size-16">Total Border</p>
+								<h3 class="text-white mb-0 font-weight-500">{{ $border }}
+								 {{-- <small class="text-success"><i class="fa fa-caret-up"></i> +2.5%</small></h3> --}}
 							</div>
 						</div>
 					</div>
@@ -29,8 +36,9 @@
 								<i class="text-warning mr-0 font-size-24 mdi mdi-car"></i>
 							</div>
 							<div>
-								<p class="text-mute mt-20 mb-0 font-size-16">Sold Cars</p>
-								<h3 class="text-white mb-0 font-weight-500">3400 <small class="text-success"><i class="fa fa-caret-up"></i> +2.5%</small></h3>
+								<p class="text-mute mt-20 mb-0 font-size-16">Total Rooms</p>
+								<h3 class="text-white mb-0 font-weight-500">{{$rooms}} 
+									{{-- <small class="text-success"><i class="fa fa-caret-up"></i> +2.5%</small></h3> --}}
 							</div>
 						</div>
 					</div>
@@ -42,13 +50,14 @@
 								<i class="text-info mr-0 font-size-24 mdi mdi-sale"></i>
 							</div>
 							<div>
-								<p class="text-mute mt-20 mb-0 font-size-16">Sales Lost</p>
-								<h3 class="text-white mb-0 font-weight-500">$1,250 <small class="text-danger"><i class="fa fa-caret-down"></i> -0.5%</small></h3>
+								<p class="text-mute mt-20 mb-0 font-size-16">Total Course</p>
+								<h3 class="text-white mb-0 font-weight-500">{{$courses}} 
+								 {{-- <small class="text-danger"><i class="fa fa-caret-down"></i> -0.5%</small></h3> --}}
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="col-xl-2 col-6">
+			{{-- 	<div class="col-xl-2 col-6">
 					<div class="box overflow-hidden pull-up">
 						<div class="box-body">							
 							<div class="icon bg-danger-light rounded w-60 h-60">
@@ -60,8 +69,8 @@
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="col-xl-2 col-6">
+				</div> --}}
+			{{-- 	<div class="col-xl-2 col-6">
 					<div class="box overflow-hidden pull-up">
 						<div class="box-body">							
 							<div class="icon bg-success-light rounded w-60 h-60">
@@ -73,8 +82,8 @@
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="col-xl-2 col-6">
+				</div> --}}
+			{{-- 	<div class="col-xl-2 col-6">
 					<div class="box overflow-hidden pull-up">
 						<div class="box-body">							
 							<div class="icon bg-light rounded w-60 h-60">
@@ -86,7 +95,7 @@
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> --}}
 				
 			</div>
 		</section>

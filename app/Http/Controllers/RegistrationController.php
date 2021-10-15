@@ -97,13 +97,6 @@ class RegistrationController extends Controller
 
 		}
 
-	//End method
-
-	public function findPrice(Request $request)
-	{
-		     $category = Rooms::whereId($request->id)->first();
-	    	return $category;
-	}
 
 //End method
 
@@ -119,6 +112,14 @@ class RegistrationController extends Controller
 	 }
 
 
+
+	//End method
+
+	public function findPrice(Request $request)
+	{
+		     $category = Rooms::whereId($request->id)->first();
+	    	return $category;
+	}
 
 
 }
