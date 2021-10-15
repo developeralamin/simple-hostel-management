@@ -96,6 +96,7 @@ Route::get('/details/{details_id}',[RegistrationController::class,'Details'])->n
 
 
 });
-//middleware
+//end middleware
 
 });
+//end prevent browser back button

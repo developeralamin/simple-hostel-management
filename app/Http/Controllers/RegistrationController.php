@@ -79,7 +79,7 @@ class RegistrationController extends Controller
 	//End method
 
 
-		public function registryUpdate(){
+		public function registryUpdate(Request $request ,$id){
 
 		}
 
