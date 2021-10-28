@@ -73,6 +73,10 @@ class RegistrationController extends Controller
 
 
 		public function registryEdit($id){
+				$this->data['editData']    = Registration::findOrFail($id);
+              $this->data['room_no']      = Rooms::all();
+			 $this->data['courses']       = Course::all();
+			 return view('backend.registrations.edit_registrations',$this->data);
 
 		}
 
